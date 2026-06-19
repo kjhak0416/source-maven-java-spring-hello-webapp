@@ -33,7 +33,7 @@ pipeline {
     REGISTRY    = 'docker.io'
     USERNAME    = 'kjhak0416'
     IMAGE_NAME  = 'myapp'
-    DOCKERFILE  = 'Dockerfile'
+    DOCKERFILE  = 'Dockerfile-kube'
     IMAGE_TAG   = "${REGISTRY}/${USERNAME}/${IMAGE_NAME}"
   }
   stages {
@@ -62,7 +62,7 @@ pipeline {
       steps {
         container('buildah') {
           sh """
-            buildah build -f ${DOCKERFILE} \
+            buildah build -f Dockerfile-kube \
               -t ${IMAGE_TAG}:${BUILD_NUMBER} \
               -t ${IMAGE_TAG}:latest .
           """
