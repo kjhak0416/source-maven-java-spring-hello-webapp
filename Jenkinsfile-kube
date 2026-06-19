@@ -62,7 +62,7 @@ pipeline {
       steps {
         container('buildah') {
           sh """
-            buildah build -f Dockerfile-kube \
+            buildah build -f ${DOCKERFILE} \
               -t ${IMAGE_TAG}:${BUILD_NUMBER} \
               -t ${IMAGE_TAG}:latest .
           """
